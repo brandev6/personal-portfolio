@@ -4,6 +4,7 @@ import { StarBackground } from "@/components/StarBackground";
 import { HeroSection } from "../components/HeroSection";
 import { AboutSection } from "../components/AboutSection";
 import { Footer } from "../components/Footer";
+import { ContactSection } from "../components/ContactSection";
 
 export const Home = () => {
     return (
@@ -18,6 +19,7 @@ export const Home = () => {
         <main>
           <HeroSection />
           <AboutSection />
+          <ContactSection />
           
         </main>
 
