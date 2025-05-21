@@ -8,10 +8,17 @@ dotenv.config();
 
 const contactRoutes = require('./routes');
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5174',
+    methods: ['POST','GET','OPTIONS'],
+    allowedHeaders: ['Content-Type'],
+    credentials: true,
+}));
 app.use(express.json());
 
-app.use('/api/contact', contactRoutes);
+
+
+app.use('/api', require('./routes'));
 
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true, useUnifiedTopology: true
