@@ -1,22 +1,10 @@
+const mongoose = require('mongoose');
 
-const Contact = require('../models/Contact');
+const contactSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  message: { type: String, required: true }
+}, { timestamps: true });
 
-const createContact = async (req, res) => {
-  try {
-    const { name, email, message } = req.body;
-    if (!name || !email || !message) {
-      return res.status(400).json({ error: 'All fields are required.' });
-    }
-    const contact = await Contact.create({ name, email, message });
-    res.status(201).json(contact);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
+module.exports = mongoose.model('Contact', contactSchema);
 
-const getContacts = async (req, res) => {
-  const contacts = await Contact.find().sort({ createdAt: -1 });
-  res.json(contacts);
-};
-
-module.exports = { createContact, getContacts };
