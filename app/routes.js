@@ -1,7 +1,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { createContact, getContacts } = require('../functions/contactFunctions.js');
+const { createContact, getContacts } = require('./contactFunctions');
 
 router.post('/', createContact);
 router.get('/', getContacts);
